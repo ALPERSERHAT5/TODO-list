@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: lightgray;
+}
+    #liste {
+        margin-top: 60px;
+     
+        background-color: blanchedalmond;
+        padding: 10px;
+        border-radius: 10px;
+        border: 3px solid black;
+        width: 200px;
+        min-height: 100px;
+    }
+    .checkbox {
+        margin-right: 10px;
+    }
+    .textim2 {
+       margin-left: 20px;
+        top: 10px;
+        left: 60px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid black;
+    }
+    .buton1 {
+        margin-left: 70px;
+        margin-top: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 2px solid black;
+        background-color: lightgray;
+        cursor: pointer;
+        width: 80px;
+    }
+    .disdiv{
+        border: 1px solid black;
+        padding-left: 35px;
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: auto;
+        width: 270px;
+        margin: 0 auto;
+    }
+</style>
+</head>
+
+<body>
+    <h1>TO-DO LİST</h1>
+    <div class="disdiv">
+    <input type="text" id="eklekutusu" class="textim2" placeholder="Bir Görev Ekle..."><br>
+    <input type="button" id="eklebutonu" class="buton1" value="Ekle" onclick="ekle()">
+    <input type="button" id="silbutonu" class="buton1" value="Sil" onclick="sil()">
+
+    <div id="liste"></div>
+
+    <script>
+        let eklebutonu = document.getElementById("eklebutonu");
+        const div = document.getElementById('liste');
+        const girdi = document.getElementById('eklekutusu');
+
+        function ekle() 
+        {
+            if (girdi.value.trim() === '') {
+                return;
+            }
+
+            liste.innerHTML = liste.innerHTML + '<div><input type="checkbox" onclick="this.parentElement.style.opacity=this.checked?0.5:1; this.nextSibling.style.textDecoration=this.checked?\'line-through\':\'none\'"> <span>' + girdi.value + '</span></div>';
+            girdi.value = '';
+
+        }
+        function sil() {
+            const checkboxes = document.querySelectorAll('#liste input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkbox.parentElement.remove();
+                }
+            });
+        }
+
+        
+
+    </script>
+    </div>
+</body>
+</html>
